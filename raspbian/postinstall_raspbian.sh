@@ -43,6 +43,7 @@ sh -c "mkdir /media/data"
 sh -c "mount -t ntfs-3g /dev/sda1 /media/data"
 sh -c "cp /etc/samba/smb.conf /etc/samba/smb.conf.origin"
 # wget config file
+wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/smb.conf -O /etc/samba/smb.conf
 sh -c "/etc/init.d/samba restart"
 
 # DLNA
@@ -50,4 +51,5 @@ echo -n "[en cours] Configuring DLNA"
 shift
 sh -c "cp /etc/minidlna.conf /etc/minidlna.conf.origin"
 #wget config file
+wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/minidlna.conf -O /etc/minidlna.conf
 sh -c "service minidlna force-reload"
