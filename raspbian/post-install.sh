@@ -45,6 +45,8 @@ sh -c "cp /etc/samba/smb.conf /etc/samba/smb.conf.origin"
 # wget config file
 wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/smb.conf -O /etc/samba/smb.conf
 sh -c "/etc/init.d/samba restart"
+# add automount samba's share folder
+echo "/dev/sda1 /media/data ntfs defaults 0 0" >> /etc/fstab 
 
 # DLNA
 echo -n "[en cours] Configuring DLNA"
