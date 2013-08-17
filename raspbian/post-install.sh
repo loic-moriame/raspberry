@@ -22,19 +22,27 @@ LISTE=$LISTE" minidlna"
 # Update & Upgrade
 echo -n "[en cours] $APT_GET update"
 shift
+shift
 $APT_GET update
 echo -n "[en cours] $APT_GET upgrade"
+shift
 shift
 $APT_GET upgrade
 
 # Installation des différents packages
 echo -n "[en cours] $APT_GET install $LISTE"
 shift
+shift
 $APT_GET install $LISTE
 
+# CHANGE HOSTNAME
+sh -c "sed -i 's/raspberrypi/raspbian/g' /etc/hostname"
+sh -c "sed -i 's/raspberrypi/raspbian/g' /etc/hosts"
+sh -c "/etc/init.d/hostname.sh start"
 
 # SAMBA
 echo -n "[en cours] Configuring SAMBA"
+shift
 shift
 sh -c "adduser guest --home=/home/public --shell=/bin/false --disabled-password"
 sh -c "chmod -R 0700 /home/public"
@@ -51,7 +59,12 @@ echo "/dev/sda1 /media/data ntfs defaults 0 0" >> /etc/fstab
 # DLNA
 echo -n "[en cours] Configuring DLNA"
 shift
+shift
 sh -c "cp /etc/minidlna.conf /etc/minidlna.conf.origin"
 #wget config file
 wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/minidlna.conf -O /etc/minidlna.conf
 sh -c "service minidlna force-reload"
+
+# GET PROFILE FILES
+wget -q https://raw.github.com/moriame/raspberry/master/raspbian/dotfiles/.bash_aliases -O /home/pi/.bash_aliases
+wget -q https://raw.github.com/moriame/raspberry/master/raspbian/dotfiles/.vimrc -O /home/pi/.vimrc
