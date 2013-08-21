@@ -43,13 +43,13 @@ sh -c "adduser guest --home=/home/public --shell=/bin/false --disabled-password"
 sh -c "chmod -R 0700 /home/public"
 sh -c "chown -R guest.guest /home/public"
 sh -c "mkdir /media/data"
-sh -c "mount -t ntfs-3g /dev/sda1 /media/data"
+sh -c "mount -t ntfs-3g /dev/sda2 /media/data"
 sh -c "cp /etc/samba/smb.conf /etc/samba/smb.conf.origin"
 # wget config file
 wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/smb.conf -O /etc/samba/smb.conf
 sh -c "/etc/init.d/samba restart"
 # add automount samba's share folder
-echo "/dev/sda1 /media/data ntfs defaults 0 0" >> /etc/fstab 
+echo "/dev/sda2 /media/data ntfs defaults 0 0" >> /etc/fstab 
 
 # DLNA
 echo -n "[en cours] Configuring DLNA \n\r"

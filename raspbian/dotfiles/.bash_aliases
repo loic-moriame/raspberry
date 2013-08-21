@@ -6,7 +6,9 @@ alias mkcd='_(){ mkdir $1; cd $1; }; _'
 if [ -f /usr/bin/tree ]
 then
     alias ll='tree -L 1'
+    alias lla='tree -apugDhL 1'
 else
     alias ll='ls -lF'
+    alias lla='ls -lFa'
 fi
 
