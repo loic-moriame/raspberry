@@ -15,7 +15,7 @@ LOG_FILE="/tmp/raspbian_postinstall-$DATE.log"
 LISTE=""
 
 # Tools
-LISTE=$LISTE" vim screen aptitude"
+LISTE=$LISTE" vim screen aptitude curl"
 LISTE=$LISTE" samba cifs-utils ntfs-3g"
 LISTE=$LISTE" minidlna"
 
