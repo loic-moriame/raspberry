@@ -35,6 +35,9 @@ shift
 shift
 $APT_GET install $LISTE
 
+# CHANGE TIMEZONE
+sh -c "/usr/bin/tzselect"
+
 # CHANGE HOSTNAME
 sh -c "sed -i 's/raspberrypi/raspbian/g' /etc/hostname"
 sh -c "sed -i 's/raspberrypi/raspbian/g' /etc/hosts"
