@@ -20,16 +20,13 @@ LISTE=$LISTE" samba cifs-utils ntfs-3g"
 LISTE=$LISTE" minidlna"
 
 # Update & Upgrade
-echo -n "[en cours] $APT_GET update"
-shift
+echo -n "[en cours] $APT_GET update \n\r"
 $APT_GET update
-echo -n "[en cours] $APT_GET upgrade"
-shift
+echo -n "[en cours] $APT_GET upgrade \n\r"
 $APT_GET upgrade
 
 # Installation des différents packages
-echo -n "[en cours] $APT_GET install $LISTE"
-shift
+echo -n "[en cours] $APT_GET install $LISTE \n\r"
 $APT_GET install $LISTE
 
 # CHANGE TIMEZONE
@@ -41,8 +38,7 @@ sh -c "sed -i 's/raspberrypi/raspbian/g' /etc/hosts"
 sh -c "/etc/init.d/hostname.sh start"
 
 # SAMBA
-echo -n "[en cours] Configuring SAMBA"
-shift
+echo -n "[en cours] Configuring SAMBA \n\r"
 sh -c "adduser guest --home=/home/public --shell=/bin/false --disabled-password"
 sh -c "chmod -R 0700 /home/public"
 sh -c "chown -R guest.guest /home/public"
@@ -56,8 +52,7 @@ sh -c "/etc/init.d/samba restart"
 echo "/dev/sda1 /media/data ntfs defaults 0 0" >> /etc/fstab 
 
 # DLNA
-echo -n "[en cours] Configuring DLNA"
-shift
+echo -n "[en cours] Configuring DLNA \n\r"
 sh -c "cp /etc/minidlna.conf /etc/minidlna.conf.origin"
 #wget config file
 wget -q https://raw.github.com/moriame/raspberry/master/raspbian/config/minidlna.conf -O /etc/minidlna.conf

@@ -14,4 +14,4 @@ To install you could use the [post-install script](https://github.com/moriame/ra
 
 or Wget:
 
-    wget -qO- h://raw.github.com/moriame/raspberry/master/raspbian/post-install.sh | sudo sh
+    wget -qO- https://raw.github.com/moriame/raspberry/master/raspbian/post-install.sh | sudo sh
