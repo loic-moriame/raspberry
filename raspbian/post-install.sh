@@ -22,16 +22,13 @@ LISTE=$LISTE" minidlna"
 # Update & Upgrade
 echo -n "[en cours] $APT_GET update"
 shift
-shift
 $APT_GET update
 echo -n "[en cours] $APT_GET upgrade"
-shift
 shift
 $APT_GET upgrade
 
 # Installation des différents packages
 echo -n "[en cours] $APT_GET install $LISTE"
-shift
 shift
 $APT_GET install $LISTE
 
@@ -45,7 +42,6 @@ sh -c "/etc/init.d/hostname.sh start"
 
 # SAMBA
 echo -n "[en cours] Configuring SAMBA"
-shift
 shift
 sh -c "adduser guest --home=/home/public --shell=/bin/false --disabled-password"
 sh -c "chmod -R 0700 /home/public"
@@ -61,7 +57,6 @@ echo "/dev/sda1 /media/data ntfs defaults 0 0" >> /etc/fstab
 
 # DLNA
 echo -n "[en cours] Configuring DLNA"
-shift
 shift
 sh -c "cp /etc/minidlna.conf /etc/minidlna.conf.origin"
 #wget config file
